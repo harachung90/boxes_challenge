@@ -1,15 +1,19 @@
 import './App.css';
 import React from 'react';
 import boxes from './boxes';
+import Box from "./Box";
 
-function App() {
-
+function App(props) {
     const [box, setBox] = React.useState(boxes)
+
+    const styles = {
+        //backgroundColor: props.darkMode ? "#222222" : "#cccccc"
+    }
 
     const boxArray = boxes;
     const boxElements = boxArray.map(box =>
-        (<div className="box" key={box.id}></div>
-            ))
+        (<Box key={box.id} on={box.on}/>
+        ))
 
     return (
         <main>
