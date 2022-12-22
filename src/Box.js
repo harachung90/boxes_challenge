@@ -1,13 +1,20 @@
 import React from "react";
-import boxes from "./boxes";
 
 export default function Box(props) {
+    const [on, setOn] = React.useState(props.on)
+
     const styles = {
-        backgroundColor: props.on ? "#222222" : "none"
+        backgroundColor: on ? "#222222" : "transparent"
     }
 
+
+    function toggleOnF() {
+        setOn(prevOn => !prevOn)
+        }
+
     return(
-        <div style={styles} className="box">
+        <div style={styles} className="box"
+        onClick={toggleOnF}>
         </div>
     )
 }
