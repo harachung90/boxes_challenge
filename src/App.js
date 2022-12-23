@@ -4,15 +4,10 @@ import boxes from './boxes';
 import Box from "./Box";
 
 function App(props) {
-    const [box, setBox] = React.useState(boxes)
-
-    const styles = {
-        //backgroundColor: props.darkMode ? "#222222" : "#cccccc"
-    }
-
+    const [squares, setSquares] = React.useState(boxes)
 
     function toggle(id) {
-        setBox(prevSquares => {
+        setSquares(prevSquares => {
             const newSquares = []
             for(let i = 0; i < prevSquares.length; i++) {
                 const currentSquare = prevSquares[i]
@@ -30,23 +25,20 @@ function App(props) {
         })
     }
 
-    const boxArray = boxes;
-    const boxElements = boxArray.map(box =>
-        (<Box key={box.id}
-              id={box.id}
-              on={box.on}
-              toggle={toggle}
-            />
-        ))
+    const squareElements = squares.map(square => (
+        <Box
+            key={square.id}
+            id={square.id}
+            on={square.on}
+            toggle={toggle}
+        />
+    ))
 
     return (
         <main>
-            <h1>Boxes will go here</h1>
-            <div className="boxes">
-                {boxElements}
-            </div>
+            {squareElements}
         </main>
-    );
+    )
 }
 
 export default App;
