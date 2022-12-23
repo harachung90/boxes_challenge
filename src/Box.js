@@ -14,7 +14,7 @@ export default function Box(props) {
 
     return(
         <div style={styles} className="box"
-        onClick={toggleOnF}>
+        onClick={()=>props.toggle(props.id)}>
         </div>
     )
 }

@@ -10,9 +10,33 @@ function App(props) {
         //backgroundColor: props.darkMode ? "#222222" : "#cccccc"
     }
 
+
+    function toggle(id) {
+        setBox(prevSquares => {
+            const newSquares = []
+            for(let i = 0; i < prevSquares.length; i++) {
+                const currentSquare = prevSquares[i]
+                if(currentSquare.id === id) {
+                    const updatedSquare = {
+                        ...currentSquare,
+                        on: !currentSquare.on
+                    }
+                    newSquares.push(updatedSquare)
+                } else {
+                    newSquares.push(currentSquare)
+                }
+            }
+            return newSquares
+        })
+    }
+
     const boxArray = boxes;
     const boxElements = boxArray.map(box =>
-        (<Box key={box.id} on={box.on}/>
+        (<Box key={box.id}
+              id={box.id}
+              on={box.on}
+              toggle={toggle}
+            />
         ))
 
     return (
